@@ -1,10 +1,16 @@
 #include "monty.h"
 
+/**
+ * pushNode - Push value to stack
+ *@stack: linked list, stack used
+ *@line_number: line_number of instruction in monty file
+ */
+
 void pushNode(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if ( params[line_number - 1] == FAILURE)
+	if (params[line_number - 1] == FAILURE)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -30,10 +36,17 @@ void pushNode(stack_t **stack, unsigned int line_number)
 	*stack = temp;
 }
 
+/**
+ * printNodes - Print all value of a stack
+ *@stack: linked list, stack used
+ *@line_number: line_number of instruction in monty file
+ */
+
 void printNodes(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
+	(void)line_number;
 	if (*stack == NULL)
 		return;
 
@@ -45,9 +58,15 @@ void printNodes(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * pint - print top of the stack
+ *@stack: linked list, stack used
+ *@line_number: line_number of instruction in monty file
+ */
+
 void pint(stack_t **stack, unsigned int line_number)
 {
-
+	(void)line_number;
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number);
@@ -56,10 +75,17 @@ void pint(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->n);
 }
 
+/**
+ * pop - Remove value from the top of a stack
+ *@stack: linked list, stack used
+ *@line_number: line_number of instruction in monty file
+ */
+
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
+	(void)line_number;
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line_number);
@@ -77,10 +103,17 @@ void pop(stack_t **stack, unsigned int line_number)
 	free(temp);
 }
 
+/**
+ * swap - swap top two values in a stack
+ *@stack: linked list, stack used
+ *@line_number: line_number of instruction in monty file
+ */
+
 void swap(stack_t **stack, unsigned int line_number)
 {
 	int tmp1, tmp2;
 
+	(void)line_number;
 	if (*stack == NULL || ((*stack)->next == NULL))
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stak too short\n", line_number);

@@ -30,7 +30,7 @@ char *trim(char *line)
 
 /**
  * getLength - get the length of a string
- *@line - string used
+ *@line: string used
  *
  * Return: length of line as integer
  */
@@ -88,8 +88,9 @@ int getValue(char *line)
 	int len = getLength(line);
 	int value, i, c, flag = 0;
 	char nums[10];
+
 	nums[0] = 'a';
-	for (i = 0, c = 0;i < len; i++)
+	for (i = 0, c = 0; i < len; i++)
 	{
 		if (line[i] >= '0' && line[i] <= '9')
 		{

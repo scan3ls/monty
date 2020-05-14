@@ -3,14 +3,16 @@
 int params[1024] = {0};
 /**
  * main - start of the program
+ *@argc: argument count
+ *@argv: array of arguments
  *
+ * Return: 0
  */
 
 int main(int argc, char *argv[])
 {
 	FILE *fp;
-	char *line = NULL;
-	char *opCode, *trimmed;
+	char *line = NULL, *opCode;
 	size_t len = 0;
 	ssize_t fread;
 	char *fileName = argv[1];
@@ -26,31 +28,42 @@ int main(int argc, char *argv[])
 	}
 
 	fp = fopen(fileName, "r");
-	if (fp < 0)
+	if (fp == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", fileName);
 		exit(EXIT_FAILURE);
 	}
 
-	while((	fread = getline(&line, &len, fp)) > 0)
+	while ((fread = getline(&line, &len, fp)) > 0)
 	{
 		opCode = getOpCode(line);
 		value = getValue(line);
 		params[lineNum] = value;
 		lineNum++;
-		if ((func = getFunc(opCode)) == NULL)
-		{
-			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
-				lineNum, opCode);
-			free(trimmed);
-			free(line);
-			exit(EXIT_FAILURE);
-		}
+		func = getFunc(opCode);
+		if (func == NULL)
+			gracefullExit(line, list, lineNum, opCode);
 		func(&list, lineNum);
-		free(trimmed);
+		free(opCode);
 	}
 	free(line);
 	fclose(fp);
-/*	free(list); */
+	freeStack(list);
 	return (0);
+}
+
+/**
+ * gracefullExit - exit if no commands are found
+ *@line: command line checked
+ *@list: current stack
+ *@lineNum: current command line number
+ *@opCode: pointer to command string
+ */
+void gracefullExit(char *line, stack_t *list, int lineNum, char *opCode)
+{
+	dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
+		lineNum, opCode);
+	free(line);
+	freeStack(list);
+	exit(EXIT_FAILURE);
 }

@@ -48,3 +48,22 @@ int isValid(char *opCode, char value)
 		return (-1);
 	return (1);
 }
+
+/**
+ * freeStack - frees a stack
+ *@stack: stack to free
+ */
+void freeStack(stack_t *stack)
+{
+	stack_t *temp;
+
+	while (stack->next != NULL)
+	{
+		temp = stack;
+		stack = stack->next;
+		stack->prev = NULL;
+		free(temp);
+	}
+
+	free(stack);
+}

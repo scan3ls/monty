@@ -40,7 +40,9 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* global Variable */
 extern int params[1024];
+
 /* monty.c */
  /* main */
 void gracefullExit(char *line, stack_t *list, int lineNum, char *opCode);
@@ -55,6 +57,7 @@ int getValue(char *line);
 void (*getFunc(char *opCode))(stack_t **stack, unsigned int line_number);
 int isValid(char *opCode, char value);
 void freeStack(stack_t *stack);
+
 /* 1-opCodes.c */
 void pushNode(stack_t **stack, unsigned int line_number);
 void printNodes(stack_t **stack, unsigned int line_number);

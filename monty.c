@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-        for (lineNum = 1; getline(&line, &len, fp) > 0; lineNum++)
+	for (lineNum = 1; getline(&line, &len, fp) > 0; lineNum++)
 	{
 		opCode = getOpCode(line);
 		if (strcmp(opCode, "") == 0)

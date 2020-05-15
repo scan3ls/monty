@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int params[1024] = {0};
+int params[5 * 1024] = {0};
 /**
  * main - start of the program
  *@argc: argument count

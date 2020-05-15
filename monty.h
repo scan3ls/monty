@@ -40,8 +40,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+
 /* global Variable */
-extern int params[1024];
+extern int params[5 * 1024];
 
 /* monty.c */
  /* main */

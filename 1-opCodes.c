@@ -24,15 +24,10 @@ void pushNode(stack_t **stack, unsigned int line_number)
 
 	temp->n = params[line_number - 1];
 	temp->prev = NULL;
-	if (*stack == NULL)
-	{
-		temp->next = NULL;
-	}
-	else
-	{
-		temp->next = *stack;
+
+	if (*stack != NULL)
 		(*stack)->prev = temp;
-	}
+	temp->next = *stack;
 	*stack = temp;
 }
 

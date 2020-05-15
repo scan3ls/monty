@@ -48,7 +48,10 @@ void printNodes(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	if (*stack == NULL)
+	{
+		printf("0\n");
 		return;
+	}
 
 	temp = *stack;
 	while (temp != NULL)
@@ -94,6 +97,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL)
 	{
 		free(*stack);
+		*stack = NULL;
 		return;
 	}
 	temp = *stack;

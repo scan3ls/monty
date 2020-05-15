@@ -59,6 +59,7 @@ char *getOpCode(char *line)
 	int i, c, flag = 0;
 	char *code = malloc(len);
 
+	code[0] = 0;
 	for (i = 0, c = 0; i < len; i++)
 	{
 		if (line[i] < 'a' ||  line[i] > 'z')
@@ -73,6 +74,7 @@ char *getOpCode(char *line)
 			flag = 1;
 		}
 	}
+
 	return (code);
 }
 

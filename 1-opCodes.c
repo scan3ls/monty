@@ -10,7 +10,7 @@ void pushNode(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if (params[line_number - 1] == FAILURE)
+	if (params[line_number] == FAILURE)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);

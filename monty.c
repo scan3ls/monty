@@ -14,9 +14,8 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	char *line = NULL, *opCode;
 	size_t len = 0;
-	ssize_t fread;
 	char *fileName = argv[1];
-	unsigned int lineNum = 0;
+	unsigned int lineNum;
 	int value;
 	void (*func)(stack_t **, unsigned int);
 	stack_t *list = NULL;
@@ -34,12 +33,13 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((fread = getline(&line, &len, fp)) > 0)
+        for (lineNum = 1; getline(&line, &len, fp) > 0; lineNum++)
 	{
 		opCode = getOpCode(line);
+		if (strcmp(opCode, "") == 0)
+			continue;
 		value = getValue(line);
 		params[lineNum] = value;
-		lineNum++;
 		func = getFunc(opCode);
 		if (func == NULL)
 			gracefullExit(line, list, lineNum, opCode);

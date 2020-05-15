@@ -70,7 +70,7 @@ void gracefullExit(char *line, stack_t *list, int lineNum, char *opCode)
 
 /**
  * resetCode - reset char pointer
- *@code: poitner to reset
+ *@opCode: poitner to reset
  */
 
 void resetCode(char *opCode)

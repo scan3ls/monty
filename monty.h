@@ -46,6 +46,7 @@ extern int params[1024];
 /* monty.c */
  /* main */
 void gracefullExit(char *line, stack_t *list, int lineNum, char *opCode);
+void resetCode(char *opCode);
 
 /* line.c */
 char *trim(char *line);

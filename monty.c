@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 		if (func == NULL)
 			gracefullExit(line, list, lineNum, opCode);
 		func(&list, lineNum);
-		free(opCode);
+		resetCode(opCode);
 	}
 	free(line);
 	fclose(fp);
@@ -66,4 +66,20 @@ void gracefullExit(char *line, stack_t *list, int lineNum, char *opCode)
 	free(line);
 	freeStack(list);
 	exit(EXIT_FAILURE);
+}
+
+/**
+ * resetCode - reset char pointer
+ *@code: poitner to reset
+ */
+
+void resetCode(char *opCode)
+{
+	int i;
+
+	free(opCode);
+	for (i = 0; i < 10; i++)
+	{
+		opCode[i] = 0;
+	}
 }

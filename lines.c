@@ -89,7 +89,7 @@ int getValue(char *line)
 {
 	int len = getLength(line);
 	int value, i, c, flag = 0;
-	char nums[10];
+	char nums[10] = {0};
 
 	nums[0] = 'a';
 	for (i = 0, c = 0; i < len; i++)

@@ -22,7 +22,7 @@ void pushNode(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	temp->n = params[line_number - 1];
+	temp->n = params[line_number];
 	temp->prev = NULL;
 
 	if (*stack != NULL)

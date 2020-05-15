@@ -10,13 +10,11 @@
 void (*getFunc(char *opCode))(stack_t **, unsigned int)
 {
 	instruction_t codes[] = {
-		{"push", pushNode},
-		{"pall", printNodes},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
+		{"push", pushNode}, {"pall", printNodes},
+		{"pint", pint},	{"pop", pop},
+		{"swap", swap},	{"add", add},
+		{"nop", nop}, {"sub", sub},
+		{"div", mdiv}, {"mul", mmul},
 		{NULL, NULL}
 	};
 

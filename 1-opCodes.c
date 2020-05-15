@@ -44,7 +44,6 @@ void printNodes(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	if (*stack == NULL)
 	{
-		printf("0\n");
 		return;
 	}
 
